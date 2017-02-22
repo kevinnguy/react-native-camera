@@ -234,7 +234,7 @@ RCT_CUSTOM_VIEW_PROPERTY(flashMode, NSInteger, RCTCamera) {
 - (void)setFlashMode {
     AVCaptureDevice *device = [self.videoCaptureDeviceInput device];
     NSError *error = nil;
-    
+
     if (![device hasFlash]) return;
     if (![device lockForConfiguration:&error]) {
         NSLog(@"%@", error);
@@ -441,14 +441,14 @@ RCT_EXPORT_METHOD(hasFlash:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRej
       self.metadataOutput = metadataOutput;
     }
 
-    __weak RCTCameraManager *weakSelf = self;
-    [self setRuntimeErrorHandlingObserver:[NSNotificationCenter.defaultCenter addObserverForName:AVCaptureSessionRuntimeErrorNotification object:self.session queue:nil usingBlock:^(NSNotification *note) {
-      RCTCameraManager *strongSelf = weakSelf;
-      dispatch_async(strongSelf.sessionQueue, ^{
-        // Manually restarting the session since it must have been stopped due to an error.
-        [strongSelf.session startRunning];
-      });
-    }]];
+    // __weak RCTCameraManager *weakSelf = self;
+    // [self setRuntimeErrorHandlingObserver:[NSNotificationCenter.defaultCenter addObserverForName:AVCaptureSessionRuntimeErrorNotification object:self.session queue:nil usingBlock:^(NSNotification *note) {
+    //   RCTCameraManager *strongSelf = weakSelf;
+    //   dispatch_async(strongSelf.sessionQueue, ^{
+    //     // Manually restarting the session since it must have been stopped due to an error.
+    //     [strongSelf.session startRunning];
+    //   });
+    // }]];
 
     [self.session startRunning];
   });
