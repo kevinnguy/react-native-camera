@@ -14,7 +14,7 @@ import android.view.View;
 import java.util.List;
 
 public class RCTCameraView extends ViewGroup {
-    private final OrientationEventListener _orientationListener;
+    // private final OrientationEventListener _orientationListener;
     private final Context _context;
     private RCTCameraViewFinder _viewFinder = null;
     private int _actualDeviceOrientation = -1;
@@ -29,20 +29,20 @@ public class RCTCameraView extends ViewGroup {
         this._context = context;
         RCTCamera.createInstance(getDeviceOrientation(context));
 
-        _orientationListener = new OrientationEventListener(context, SensorManager.SENSOR_DELAY_NORMAL) {
-            @Override
-            public void onOrientationChanged(int orientation) {
-                if (setActualDeviceOrientation(_context)) {
-                    layoutViewFinder();
-                }
-            }
-        };
-
-        if (_orientationListener.canDetectOrientation()) {
-            _orientationListener.enable();
-        } else {
-            _orientationListener.disable();
-        }
+        // _orientationListener = new OrientationEventListener(context, SensorManager.SENSOR_DELAY_NORMAL) {
+        //     @Override
+        //     public void onOrientationChanged(int orientation) {
+        //         if (setActualDeviceOrientation(_context)) {
+        //             layoutViewFinder();
+        //         }
+        //     }
+        // };
+        //
+        // if (_orientationListener.canDetectOrientation()) {
+        //     _orientationListener.enable();
+        // } else {
+        //     _orientationListener.disable();
+        // }
     }
 
     @Override
