@@ -154,7 +154,7 @@ RCT_CUSTOM_VIEW_PROPERTY(captureQuality, NSInteger, RCTCamera) {
       break;
   }
 
-  [self setCaptureQuality:qualityString];
+//  [self setCaptureQuality:qualityString];
 }
 
 RCT_CUSTOM_VIEW_PROPERTY(aspect, NSInteger, RCTCamera) {
